@@ -70,15 +70,26 @@ sudo docker run hello-world
 ## git 密碼
 參考資料：[How to save username and password in Git?](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git)
 
-在 Linux 上 checkout 了一個 project 之後你想要之後都不用輸入密碼直接 git pull 和 git push，你得先執行下面的指令：
+現在 git 需要 Personal access tokens [Generate new token](https://github.com/settings/tokens/new)，當你有一台新機器需要登入的密碼時，便到這裏去申請自己的新 token，給它一個名字和有效期限，然後到你的機器上執行以下的指令：
 
-```
+
+```bash
 git config --global credential.helper store
 ```
 
-然後再執行一次
+接著便可以用 git clone 嚐試去 clone 一個你自己的專案，它會問帳號密碼，密碼就輸入你所產生的新 token。
+
+好了之後，可以到被 clone 下來的目錄中再執行一次
 
 ```
 git pull origin
 ```
-接下來就不會再問你密碼了。
+
+確認一下是不是不會再詢問密碼。
+
+## Java openjdk 11
+如果你的專案有用到 Spring Boot 或是其它 Java 的應用，用以下的指令來安裝 openjdk 11 以利之後編譯 java 時所需。
+
+```bash
+sudo apt-get install openjdk-11-jdk
+```
