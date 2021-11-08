@@ -23,8 +23,10 @@ sudo dpkg-reconfigure tzdata
 
 
 ## 修正 locale 的警告
+```
 sudo locale-gen en_US.UTF-8
 sudo update-locale LANG=en_US.UTF-8
+```
 
 ## 安裝 docker
 
