@@ -57,6 +57,13 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
+安裝 docker engine
+
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
 用這個指令確認是不是安裝好了
 
 ```bash
