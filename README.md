@@ -73,8 +73,10 @@ sudo docker run hello-world
 [2]: https://docs.docker.com/engine/install/ubuntu/
 
 ## docker 使用者的權限
-
-
+用下面這個指令來加現在的使用者到 docker 的使用者列表中
+```bash
+sudo usermod -aG docker ${USER}
+```
 
 ## git 密碼
 參考資料：[How to save username and password in Git?](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git)
