@@ -104,3 +104,49 @@ git pull origin
 ```bash
 sudo apt-get install openjdk-11-jdk
 ```
+
+## zerotier
+
+### 安裝 zerotier
+
+```
+curl -s https://install.zerotier.com | sudo bash
+```
+
+或是
+
+```
+curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+```
+做好之後機器就會得到一個10碼獨一無二的代碼。
+
+### 加入 zerotier
+
+要加入 zerotier 輸入下面的指令，後面接16碼要加入的網路代碼，然後到 zerotier 網路端去許可該節點進入。下面的指令也包括了離開以到列出所有網路的指令：
+
+```bash
+zerotier-cli join ################
+zerotier-cli leave ################
+zerotier-cli listnetworks
+zerotier-cli status
+
+```
+
+[參考資料](https://zerotier.atlassian.net/wiki/spaces/SD/pages/29065282/Command+Line+Interface+zerotier-cli)
+## email
+
+```
+sudo apt-get install ssmtp
+```
+
+## 燒機測試
+[參考網址](http://takashi0922.blogspot.com/2015/07/ubuntutest-your-ubuntu-computer-ubuntu.html)
+
+```
+sudo apt-get install stress
+```
+用44線程燒cpu、三線程燒記憶體、一線程燒硬碟，時間3600秒(如果是分鐘就寫 M ，比如 1440M 就是一天)。
+```
+stress -c 44 -m 3 -d 1 -t 3600s
+```
