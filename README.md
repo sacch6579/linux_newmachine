@@ -61,7 +61,7 @@ echo \
 
 ```
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ```
 
 用這個指令確認是不是安裝好了
@@ -88,7 +88,8 @@ sudo usermod -aG docker ${USER}
 git config --global credential.helper store
 ```
 
-接著便可以用 git clone 嚐試去 clone 一個你自己的專案，它會問帳號密碼，密碼就輸入你所產生的新 token。
+接著便可以用 git clone 嚐試去 clone 一個你自己的專案，它會問帳號密碼，密碼就輸入你所產生的新 token。Token 的產生可以到下面這個[網頁](https://github.com/settings/tokens)：
+
 
 好了之後，可以到被 clone 下來的目錄中再執行一次
 
@@ -102,7 +103,7 @@ git pull origin
 如果你的專案有用到 Spring Boot 或是其它 Java 的應用，用以下的指令來安裝 openjdk 11 以利之後編譯 java 時所需。
 
 ```bash
-sudo apt-get install openjdk-11-jdk
+sudo apt-get install -y openjdk-11-jdk
 ```
 
 ## zerotier
@@ -134,17 +135,21 @@ zerotier-cli status
 ```
 
 [參考資料](https://zerotier.atlassian.net/wiki/spaces/SD/pages/29065282/Command+Line+Interface+zerotier-cli)
+
 ## email
 
 ```
-sudo apt-get install ssmtp
+sudo apt-get install -y ssmtp
 ```
+[Ubuntu 使用 ssmtp 透過 Gmail 發送 email](https://noter.tw/50/ubuntu-使用-ssmtp-透過-gmail-發送-email/)
+[Linux 使用 SSMTP 與 GMail 以指令或程式自動寄信教學](https://blog.gtwang.org/linux/linux-send-mail-command-using-ssmtp-and-gmail/)
+
 
 ## 燒機測試
 [參考網址](http://takashi0922.blogspot.com/2015/07/ubuntutest-your-ubuntu-computer-ubuntu.html)
 
 ```
-sudo apt-get install stress
+sudo apt-get install -y stress
 ```
 用44線程燒cpu、三線程燒記憶體、一線程燒硬碟，時間3600秒(如果是分鐘就寫 M ，比如 1440M 就是一天)。
 ```
