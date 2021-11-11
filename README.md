@@ -123,25 +123,58 @@ if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bas
 做好之後機器就會得到一個10碼獨一無二的代碼。
 
 ### 加入 zerotier
+到 [https://my.zerotier.com/](https://my.zerotier.com/) 去查看自己創立好的 zerotier 網段，把機器加到 zerotier 的網域中管理。
 
 要加入 zerotier 輸入下面的指令，後面接16碼要加入的網路代碼，然後到 zerotier 網路端去許可該節點進入。下面的指令也包括了離開以到列出所有網路的指令：
 
 ```bash
-zerotier-cli join ################
-zerotier-cli leave ################
-zerotier-cli listnetworks
-zerotier-cli status
-
+sudo zerotier-cli join ################
+sudo zerotier-cli leave ################
+sudo zerotier-cli listnetworks
+sudo zerotier-cli status
 ```
 
 [參考資料](https://zerotier.atlassian.net/wiki/spaces/SD/pages/29065282/Command+Line+Interface+zerotier-cli)
 
 ## email
 
+如果你需要發送 email 給自己或是其它同伴：
+
 ```
 sudo apt-get install -y ssmtp
 ```
+
+然後用 `` sudo vi /etc/ssmtp/ssmtp.conf`` 編輯郵件的設定檔。
+
+```config
+# 接收系統郵件的 Email (應該也是收信的 email?)
+root=<your email>@gmail.com
+
+# 使用 GMail 的 MTA 送信 
+mailhub=smtp.gmail.com:587
+
+# 設定 hostname
+hostname=<your hostname>
+
+# 允許使用者設定 Email 的 From 欄位
+FromLineOverride=YES
+
+# Google 帳號與密碼
+AuthUser=<your email>@gmail.com
+AuthPass=<your password>
+
+# 啟用安全加密連線
+UseSTARTTLS=YES
+UseTLS=YES
+
+# 輸出除錯資訊
+Debug=YES
+```
+
+這上面的 password 要到 Gmail security 來設定，到 [Gmail Security](https://myaccount.google.com/u/3/security) 選取 App passwords 來新增應用程式密碼。
+
 [Ubuntu 使用 ssmtp 透過 Gmail 發送 email](https://noter.tw/50/ubuntu-使用-ssmtp-透過-gmail-發送-email/)
+
 [Linux 使用 SSMTP 與 GMail 以指令或程式自動寄信教學](https://blog.gtwang.org/linux/linux-send-mail-command-using-ssmtp-and-gmail/)
 
 
