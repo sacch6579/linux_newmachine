@@ -1,7 +1,6 @@
-# linux_newmachine
-這裏記錄在 Ubuntu 20.04 上設定會使用到 docker 的新機器要做的工作。
-
-
+# Ubuntu 20.04 設定 docker + Spring boot 網頁服務機器步驟。
+這裏記錄在 Ubuntu 20.04 上設定會使用到 docker 網頁服務的新機器要做的工作。
+有些設定是在 docker 與 Spring boot 下的內容便不包括在此說明中。
 
 ## 新增使用者
 
