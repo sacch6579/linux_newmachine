@@ -177,6 +177,8 @@ Debug=YES
 
 [Linux 使用 SSMTP 與 GMail 以指令或程式自動寄信教學](https://blog.gtwang.org/linux/linux-send-mail-command-using-ssmtp-and-gmail/)
 
+[以 Java 執行 SMTP 來傳送電子郵件](https://docs.aws.amazon.com/zh_tw/ses/latest/DeveloperGuide/send-using-smtp-java.html)
+
 
 ## 燒機測試
 [參考網址](http://takashi0922.blogspot.com/2015/07/ubuntutest-your-ubuntu-computer-ubuntu.html)
