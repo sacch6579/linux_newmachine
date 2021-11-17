@@ -135,6 +135,28 @@ sudo zerotier-cli status
 
 [參考資料](https://zerotier.atlassian.net/wiki/spaces/SD/pages/29065282/Command+Line+Interface+zerotier-cli)
 
+
+
+## Netdata
+
+管理 netdata 儲存資料的時間：[Change how long Netdata stores metrics](https://learn.netdata.cloud/guides/longer-metrics-storage)
+
+到下面這個檔案：
+
+```
+/etc/netdata/netdata.conf
+```
+
+去修改 history 那一行，我習慣弄到五天的時間長度，估計大概是 86400 x 5 = 432000 秒。
+
+```
+history = 432000
+page cache size = 320
+dbengine disk space = 2560
+```
+
+現在暫時我的設定是這樣。之後再討論是不是ok... 
+
 ## email
 
 如果你需要發送 email 給自己或是其它同伴：
@@ -189,3 +211,37 @@ sudo apt-get install -y stress
 ```
 stress -c 44 -m 3 -d 1 -t 3600s
 ```
+
+## 檢查系統問題
+
+[How to View System Log Files on Ubuntu 20.04 LTS](https://vitux.com/view-system-log-files-ubuntu/)
+
+下面這個指令可以看現在的系統 log，
+
+```bash
+sudo cat /var/log/syslog
+```
+
+[Debugging System Crash](https://help.ubuntu.com/community/DebuggingSystemCrash)
+
+下面這個則是看 crash log，可以看到很多天前的資料。
+```bash
+sudo vi /var/log/kern.log
+```
+
+## 掛載磁碟陣列
+
+用軟體掛載磁碟陣列的參考文件 [Ubuntu 20.04 Root on ZFS](https://openzfs.github.io/openzfs-docs/Getting%20Started/Ubuntu/Ubuntu%2020.04%20Root%20on%20ZFS.html) ，第一碟用的是 SSD 比較不怕掛掉，剩下的資料就習慣掛到 `/data` 去，用軟體的方式去掛載多顆本機的硬碟。
+
+另外兩個參考文件：
+
+[Z 檔案系統 (ZFS)](https://docs.freebsd.org/zh-tw/books/handbook/zfs)
+
+[Troubleshooting ZFS](https://openzfs.github.io/openzfs-docs/Basic%20Concepts/Troubleshooting.html)
+
+有時候沒有掛載要重新掛載的話要用這個
+
+```
+sudo zpool import data
+```
+
