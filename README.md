@@ -245,3 +245,84 @@ sudo vi /var/log/kern.log
 sudo zpool import data
 ```
 
+## 安全性
+
+### 限制登入網段
+[限制 Linux 的 SSH 連線設定](https://cynthiachuang.github.io/Linux_SSH_Access_Control/)
+
+[Restrict SSH login to a specific IP or host](https://docs.rackspace.com/support/how-to/restrict-ssh-login-to-a-specific-ip-or-host/)
+修改
+```
+/etc/hosts.allow
+/etc/hosts.deny
+```
+
+這兩個檔案來限制與允許由外部進來的連線。比方說在 `/etc/hosts.allow` 中加入
+```
+sshd:192.168.31.0/24,192.168.99.10/16
+```
+就是允許 `192.168.31.0/24` 還有 `192.168.99.10/16` 這兩個網段登入的動作。既然有允許就有拒絕，那麼在 `/etc/hosts.deny` 中加入
+```
+sshd:ALL
+```
+便可以拒絕除了 `/etc/hosts.allow` 定義的網段以外的登入動作。要設定這些之前要非常小心，因為不小心就有可能讓自己登不進去。
+
+### DDoS 攻擊
+[How to check for and stop DDoS attacks on Linux](https://www.techrepublic.com/article/how-to-check-for-and-stop-ddos-attacks-on-linux/)
+
+[How to stop/prevent SSH bruteforce](https://serverfault.com/questions/594746/how-to-stop-prevent-ssh-bruteforce)
+
+
+
+## 資料庫備份
+
+備份可能會用到的資源：
+
+[How to Automate MySQL Database Backups in Linux](https://sqlbak.com/blog/how-to-automate-mysql-database-backups-in-linux)
+
+[Linux Time Machine](https://github.com/cytopia/linux-timemachine)
+
+
+
+```bash
+sudo apt-get update 
+sudo apt-get install -y postfix mailutils
+```
+
+
+
+```bash
+# Backup storage directory 
+backupfolder=/var/backups
+# Notification email address 
+recipient_email=<username@mail.com>
+# MySQL user
+user=<user_name>
+# MySQL password
+password=<password>
+# Number of days to store the backup 
+keep_day=30 
+sqlfile=$backupfolder/all-database-$(date +%d-%m-%Y_%H-%M-%S).sql
+zipfile=$backupfolder/all-database-$(date +%d-%m-%Y_%H-%M-%S).zip 
+# Create a backup 
+sudo mysqldump -u $user -p$password --all-databases > $sqlfile 
+if [ $? == 0 ]; then
+  echo 'Sql dump created' 
+else
+  echo 'mysqldump return non-zero code' | mailx -s 'No backup was created!' $recipient_email  
+  exit 
+fi 
+# Compress backup 
+zip $zipfile $sqlfile 
+if [ $? == 0 ]; then
+  echo 'The backup was successfully compressed' 
+else
+  echo 'Error compressing backup' | mailx -s 'Backup was not created!' $recipient_email 
+  exit 
+fi 
+rm $sqlfile 
+echo $zipfile | mailx -s 'Backup was successfully created' $recipient_email 
+# Delete old backups 
+find $backupfolder -mtime +$keep_day -delete
+```
+
