@@ -27,7 +27,7 @@ sudo service auditd start
 
 然後我們就可以用 `aureport -au -i` 這樣的指令來看從安裝至今的登入記錄了，包括登入失敗和登入成功的所有記錄。然而我們需要的是過去24小時的登入記錄，那麼我們需要執行類似像 `sudo aureport -au -i -ts 03/07/2023 00:00:00 -te 03/08/2023 00:00:00` 這樣有時間範圍的指令。在 crontab 裏如果用 root 身份執行不需要使用 sudo 所以到時候要把 sudo 拿掉。
 
-那麼我們來寫個 script。下面是 `/usr/local/sbin/line_notify_login.sh`：
+那麼我們來寫個 script。下面是 `/usr/local/sbin/line_notify_login.sh` 接著把檔案改成可執行：
 
 ```bash
 #!/bin/bash
