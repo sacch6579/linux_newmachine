@@ -6,6 +6,9 @@
 參考資料：[LINE Notify API Document](https://notify-bot.line.me/doc/en/)
 這部份就不再贅述。
 
+## crontab 設定
+參考資料：[Linux 系統上使用 crontab 工作排程](https://blog.gtwang.org/linux/linux-crontab-cron-job-tutorial-and-examples/)
+
 ## 安裝 aureport
 
 參考資料：[How to track successful and failed login attempts in Linux](https://www.2daygeek.com/check-track-successful-failed-login-attempts-linux/)
@@ -28,8 +31,8 @@ sudo service auditd start
 
 ```bash
 #!/bin/bash
-# 下面兩行先把時間給定出來
 SERVER="server name"
+# 下面兩行先把時間給定出來
 START="$(date --date="yesterday" +"%m/%d/%Y") 00:00:00"
 END="$(date --date="yesterday" +"%m/%d/%Y") 00:00:00"
 # 取得 aureport 並存入 RESULT
