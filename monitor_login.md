@@ -34,7 +34,7 @@ sudo service auditd start
 SERVER="server name"
 # 下面兩行先把時間給定出來
 START="$(date --date="yesterday" +"%m/%d/%Y") 00:00:00"
-END="$(date --date="yesterday" +"%m/%d/%Y") 00:00:00"
+END="$(date --date="today" +"%m/%d/%Y") 00:00:00"
 # 取得 aureport 並存入 RESULT
 RESULT=$(aureport -au -i -ts ${START} -te ${END})
 # 處理一些統計
