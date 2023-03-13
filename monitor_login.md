@@ -27,6 +27,15 @@ sudo service auditd start
 
 然後我們就可以用 `aureport -au -i` 這樣的指令來看從安裝至今的登入記錄了，包括登入失敗和登入成功的所有記錄。然而我們需要的是過去24小時的登入記錄，那麼我們需要執行類似像 `sudo aureport -au -i -ts 03/07/2023 00:00:00 -te 03/08/2023 00:00:00` 這樣有時間範圍的指令。在 crontab 裏如果用 root 身份執行不需要使用 sudo 所以到時候要把 sudo 拿掉。
 
+
+## 關於 aureport 在 crontab 上可能使用錯誤的檔案的問題
+
+參考資料：[ausearch & aureport fail from cron](https://listman.redhat.com/archives/linux-audit/2012-June/msg00001.html)
+
+由於 aureport 在 crontab 環境有可能會使用錯誤的檔案來參照登入記錄，我們需要強迫它使用 `/var/log/audit/audit.log` 這個檔案來取得登入記錄，於是要在 aureport 的命令列中加上 `-if /var/log/audit/audit.log`。
+
+## 寫成 script
+
 那麼我們來寫個 script。下面是 `/usr/local/sbin/line_notify_login.sh` 接著把檔案改成可執行：
 
 ```bash
@@ -36,7 +45,7 @@ SERVER="server name"
 START="$(date --date="yesterday" +"%m/%d/%Y") 00:00:00"
 END="$(date --date="today" +"%m/%d/%Y") 00:00:00"
 # 取得 aureport 並存入 RESULT
-RESULT=$(aureport -au -i -ts ${START} -te ${END})
+RESULT=$(aureport -if /var/log/audit/audit.log -au -i -ts ${START} -te ${END})
 # 處理一些統計
 YES=$(echo "$RESULT" | grep " yes " | wc -l)
 YES_AUTHS=$(echo "$RESULT" | grep " yes " | awk '{ print $4 }' | sort | uniq | sed ':a; N; $!ba; s/\n/,/g')
