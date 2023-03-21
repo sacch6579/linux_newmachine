@@ -4,7 +4,7 @@
 
 ```
 docker run -d --name=netdata \
-  --hostname=proxy \
+  --hostname=<你要加的host名稱> \
   -p 19999:19999 \
   -v netdataconfig:/etc/netdata \
   -v netdatalib:/var/lib/netdata \
@@ -18,7 +18,7 @@ docker run -d --name=netdata \
   --restart unless-stopped \
   --cap-add SYS_PTRACE \
   --security-opt apparmor=unconfined \
-  -e NETDATA_CLAIM_TOKEN=xVWSI9HIA6cW8Yi3jNaQhTf3xlfgHa3YjOEh6vt3XWfWEFhSfa9AGZKkLiC3sjvYFKO9f3qdTasK1OZL3WErZJjgs438QRx_Mpuc6_4n5VSLntVfyyjhjIARH4Wh2B_O6y3M \
+  -e NETDATA_CLAIM_TOKEN=<要一個新的 token> \
   -e NETDATA_CLAIM_URL=https://app.netdata.cloud \
   -e PGID=998 \
   netdata/netdata
