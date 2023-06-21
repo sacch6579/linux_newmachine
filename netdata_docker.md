@@ -1,25 +1,23 @@
 # Netdata 監控
 
+## 如果需要把舊的版本刪掉
+[Updates for most systems](https://learn.netdata.cloud/docs/maintaining/update-netdata-agents#updates-for-most-systems)
+
+```
+docker stop netdata
+docker rm netdata
+```
+
+## 安裝
+
 在 [Install Netdata with Docker](https://learn.netdata.cloud/docs/agent/packaging/docker) 文章中看 Docker container names resolution 這段。
+
+在 Netdata cloud 的 Manage War Room / Add Nodes 選單中，找到 docker 安裝片段：
 
 ```
 docker run -d --name=netdata \
+  <... 其它省略 ... > 
   --hostname=<你要加的host名稱> \
-  -p 19999:19999 \
-  -v netdataconfig:/etc/netdata \
-  -v netdatalib:/var/lib/netdata \
-  -v netdatacache:/var/cache/netdata \
-  -v /etc/passwd:/host/etc/passwd:ro \
-  -v /etc/group:/host/etc/group:ro \
-  -v /proc:/host/proc:ro \
-  -v /sys:/host/sys:ro \
-  -v /etc/os-release:/host/etc/os-release:ro \
-  -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  --restart unless-stopped \
-  --cap-add SYS_PTRACE \
-  --security-opt apparmor=unconfined \
-  -e NETDATA_CLAIM_TOKEN=<要一個新的 token> \
-  -e NETDATA_CLAIM_URL=https://app.netdata.cloud \
   -e PGID=998 \
   netdata/netdata
   ```
@@ -28,3 +26,4 @@ docker run -d --name=netdata \
   
   ## GPU
 參考：[Nvidia GPU collector](https://learn.netdata.cloud/docs/data-collection/monitor-anything/hardware/nvidia_smi-python.d.plugin)
+
