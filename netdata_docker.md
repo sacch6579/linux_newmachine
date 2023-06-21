@@ -22,7 +22,11 @@ docker run -d --name=netdata \
   netdata/netdata
   ```
   
-  `hostname` 要改成現在在執行的 host 的名稱，然後最後面那個 PGID 的值執行這個指令來取得 `grep docker /etc/group | cut -d ':' -f 3`。
+`hostname` 要改成現在在執行的 host 的名稱，然後最後面那個 PGID 的值執行這個指令來取得 
+
+```
+grep docker /etc/group | cut -d ':' -f 3
+```
   
   ## GPU
 參考：[Nvidia GPU collector](https://learn.netdata.cloud/docs/data-collection/monitor-anything/hardware/nvidia_smi-python.d.plugin)
