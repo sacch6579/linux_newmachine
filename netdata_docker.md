@@ -3,6 +3,13 @@
 ## 如果需要把舊的版本刪掉
 [Updates for most systems](https://learn.netdata.cloud/docs/maintaining/update-netdata-agents#updates-for-most-systems)
 
+首先把新的 image 拉下來
+```
+docker pull netdata/netdata:latest
+```
+
+然後停止並刪除舊的 container
+
 ```
 docker stop netdata
 docker rm netdata
