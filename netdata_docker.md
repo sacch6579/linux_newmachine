@@ -1,5 +1,26 @@
 # Netdata 監控
 
+之前會使用用 docker 版來安裝 netdata 不過後來發現 docker 版沒有辦法自己更新，現在覺得還是本機安裝比較方便。
+
+安裝 netdata 很簡單，只要在想要新增的 War Room 右上角按 Add Nodes 就會有安裝的指示。
+安裝完之後可能 netdata 不會自動啟動，要用下面網頁面的令來設定讓它啟動。
+
+[Start, stop, or restart the Netdata Agent](https://learn.netdata.cloud/docs/maintaining/starting-and-stopping-netdata-agents#:~:text=Using%20systemctl%20%2C%20service%20%2C%20or%20init.&text=This%20is%20the%20recommended%20way,run%20sudo%20systemctl%20restart%20netdata%20.)
+
+基本上就是 
+```
+# 開機啟用 netdata
+sudo systemctl enable netdata
+# 開始 netdata 服務
+sudo systemctl start netdata
+```
+
+## GPU
+參考：[Nvidia GPU collector](https://learn.netdata.cloud/docs/data-collection/monitor-anything/hardware/nvidia_smi-python.d.plugin)
+
+
+## Docker install
+
 ## 如果需要把舊的版本刪掉
 [Updates for most systems](https://learn.netdata.cloud/docs/maintaining/update-netdata-agents#updates-for-most-systems)
 
@@ -35,6 +56,4 @@ docker run -d --name=netdata \
 grep docker /etc/group | cut -d ':' -f 3
 ```
   
-  ## GPU
-參考：[Nvidia GPU collector](https://learn.netdata.cloud/docs/data-collection/monitor-anything/hardware/nvidia_smi-python.d.plugin)
 
