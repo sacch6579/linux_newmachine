@@ -15,6 +15,10 @@ sudo systemctl enable netdata
 sudo systemctl start netdata
 ```
 
+## netdata 自動更新
+
+[Update Netdata](https://learn.netdata.cloud/docs/maintaining/update-netdata-agents)
+
 ## GPU
 參考：[Nvidia GPU collector](https://learn.netdata.cloud/docs/data-collection/monitor-anything/hardware/nvidia_smi-python.d.plugin)
 
