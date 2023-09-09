@@ -161,6 +161,17 @@ dbengine disk space = 2560
 
 現在暫時我的設定是這樣。之後再討論是不是ok... 
 
+### 在有 nVidia GPU 的機器上啟動 GPU 監控的功能
+
+下面這一頁有提到需要修改 `go.d/nvidia_smi.conf` 不過我看了一下好像沒有什麼需要改。
+
+[啟用 nVidia GPU 監控](https://app.netdata.cloud/spaces/1000lpr/rooms/all-nodes/nodes/49a82e14-1ee5-448d-ad13-870ff76914ab#metrics_correlation=false&after=-900&before=0&utc=Asia%2FTaipei&offset=%2B8&timezoneName=Taipei&modal=&modalTab=&modalParams=&selectedIntegrationCategory=data-collection.hardware-devices-and-sensors&integrationsModalOpen=true&selectedIntegration=go.d.plugin-nvidia_smi-Nvidia_GPU&selectedIntegrationTab=&96ee29b6-e81f-4cae-abcb-41e0519623fb-49a82e14-1ee5-448d-ad13-870ff76914ab-chartName=menu_docker_submenu_containers)
+
+安裝 `apt install mlocate` 使用 locate 找到 `go.d.conf` 的位置，系統很小的話應該一下子就找到了。
+找到有 nvidia 的那行改掉，讓它啟動。
+
+[重啟netdata服務](https://learn.netdata.cloud/docs/maintaining/starting-and-stopping-netdata-agents)
+
 ## email
 
 如果你需要發送 email 給自己或是其它同伴：
