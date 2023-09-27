@@ -140,6 +140,8 @@ sudo zerotier-cli status
 [參考資料](https://zerotier.atlassian.net/wiki/spaces/SD/pages/29065282/Command+Line+Interface+zerotier-cli)
 
 
+## 更改 hostname
+`sudo hostnamectl set-hostname <想要改的名稱>`
 
 ## Netdata
 
