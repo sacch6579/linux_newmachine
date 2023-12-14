@@ -15,7 +15,7 @@ sudo vi /etc/exports
 `/mnt/share` 是你要分享出去的目錄
 
 ```
-/mnt/share 192.168.0.* (rw,sync,subtree_check)
+/mnt/share 192.168.0.*(rw,sync,subtree_check)
 ```
 
 上面的 `192.168.0.*` 只是一個範例，可以定義要分享的目錄可以接受 client 的網段，避免莫名奇妙的人來存取。
