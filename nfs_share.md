@@ -38,3 +38,5 @@ showmount -e 192.168.1.12
 ```
 
 這東西也可以用來檢查自己的服務是不是有不小心分享了不該分享的東西出來。
+
+參考資料：[macOS (OS X) Nfs mount Command](https://www.cyberciti.biz/faq/apple-mac-osx-nfs-mount-command-tutorial/)
