@@ -2,6 +2,19 @@
 這裏記錄在 Ubuntu 20.04 上設定會使用到 docker 網頁服務的新機器要做的工作。
 有些設定是在 docker 與 Spring boot 下的內容便不包括在此說明中。
 
+## 安裝 ssh 
+如果 Ubuntu 裏並沒有安裝 ssh 就得先安裝才有辦法利用 ssh 遠端登入，參考 [Ubuntu 作業系統SSH安裝及設定教學](https://hackmd.io/@W855Yo-6R22n28iWVYZdVw/HJwUo8yzT)
+
+```
+apt update
+apt upgrade
+apt install openssh-server
+```
+如果要修改 ssh 的設定就修改 `/etc/ssh/sshd_config`
+然後如果修改完要重啟 ssh 服務就執行 `/etc/init.d/ssh restart`
+然後最後要確認 openSSH 的服務是否有被預設啟動 `systemctl is-enabled ssh`
+要預設啟動服務就下 `sudo systemctl enable ssh` 指令
+
 ## 新增使用者
 
 ```bash
