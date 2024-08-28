@@ -261,8 +261,7 @@ sudo vi /var/log/kern.log
 ```
 ## NFS 設定
 參考資料：
-1. [Starting and Stopping the NFS Server](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/s1-nfs-start#s1-nfs-start)
-
+1. [Network File System (NFS)](https://ubuntu.com/server/docs/network-file-system-nfs)
 
 ## 掛載磁碟陣列
 
