@@ -3,7 +3,8 @@
 有些設定是在 docker 與 Spring boot 下的內容便不包括在此說明中。
 
 ## 安裝 ssh 
-如果 Ubuntu 裏並沒有安裝 ssh 就得先安裝才有辦法利用 ssh 遠端登入，參考 [Ubuntu 作業系統SSH安裝及設定教學](https://hackmd.io/@W855Yo-6R22n28iWVYZdVw/HJwUo8yzT)
+如果 Ubuntu 裏並沒有安裝 ssh 就得先安裝才有辦法利用 ssh 遠端登入，參考
+1. [Ubuntu 作業系統SSH安裝及設定教學](https://hackmd.io/@W855Yo-6R22n28iWVYZdVw/HJwUo8yzT)
 
 ```
 apt update
@@ -258,6 +259,10 @@ sudo cat /var/log/syslog
 ```bash
 sudo vi /var/log/kern.log
 ```
+## NFS 設定
+參考資料：
+1. [Starting and Stopping the NFS Server](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/s1-nfs-start#s1-nfs-start)
+
 
 ## 掛載磁碟陣列
 
