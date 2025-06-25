@@ -360,3 +360,15 @@ echo $zipfile | mailx -s 'Backup was successfully created' $recipient_email
 find $backupfolder -mtime +$keep_day -delete
 ```
 
+## 遠端登入免密碼
+其實很簡單，如果還沒產生 key，就先執行
+
+```java
+ssh-keygen
+```
+
+有了 key 之後，就可以：
+
+```java
+ssh-copy-id <帳號>@<遠端的 hostname/IP>
+```
