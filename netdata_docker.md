@@ -60,4 +60,7 @@ docker run -d --name=netdata \
 grep docker /etc/group | cut -d ':' -f 3
 ```
   
+## 重新安裝
+
+wget -O /tmp/netdata-kickstart.sh https://get.netdata.cloud/kickstart.sh && sh /tmp/netdata-kickstart.sh --reinstall
 
