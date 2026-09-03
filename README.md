@@ -372,3 +372,41 @@ ssh-keygen
 ```java
 ssh-copy-id <帳號>@<遠端的 hostname/IP>
 ```
+
+## vim 設定
+
+有時候你會發現在 insert 模式按上下左右會跑出奇怪的字元，這通常是 Vim 沒進入完整相容模式或終端按鍵碼設定不對，先在 `~/.vimrc` 加這幾行：
+
+```vim
+set nocompatible
+set backspace=indent,eol,start
+set ttimeout
+set ttimeoutlen=100
+```
+
+如果你的狀況是 insert 模式按方向鍵出現 `A B C D` 或 `^[OA` 之類，通常上面就能改善。
+
+設定方式：
+
+```bash
+vim ~/.vimrc
+```
+
+進去後按 `i` 貼上設定，然後按：
+
+```text
+Esc
+:wq
+```
+
+如果你其實是在很精簡的 vi，不是 vim，也可以先確認：
+
+```bash
+vim --version
+```
+
+Ubuntu/Debian 上若裝到的是 tiny 版，可以改裝完整版：
+
+```bash
+sudo apt install vim
+```
