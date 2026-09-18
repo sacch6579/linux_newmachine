@@ -1,6 +1,3 @@
-下面是一版新的，可以直接存成例如 `README_ubuntu_26_04.md`。
-
-```markdown
 # Ubuntu 26.04 設定 Docker + Spring Boot 網頁服務機器步驟
 
 本文記錄 Ubuntu 26.04 LTS 新機器常用初始化流程，適用於 Docker、Spring Boot、HOC/CMS、資料庫維運等服務主機。
@@ -279,5 +276,4 @@ free -h
 lsblk
 systemctl status docker
 docker ps
-```
 ```
